@@ -20,7 +20,7 @@
             --primary-hover: #1d4ed8;
             --secondary-color: #10b981;
             --danger-color: #ef4444;
-            --background: #1e40af;
+            --background: #1e3a8a;
             --card-background: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
@@ -326,7 +326,7 @@
             <p><strong>Getting Started:</strong></p>
             <div style="display: flex; gap: 40px; justify-content: center; text-align: left;">
                 <ol style="margin: 10px 0; padding-left: 20px; flex: 1;">
-                    <li>Enter your webhook URLs in the Configuration section</li>
+                    <li>Enter your n8n webhook URLs in the Configuration section</li>
                     <li>Load your Google Sheet with patient scenarios</li>
                     <li>Select a patient scenario from the dropdown (or choose random)</li>
                     <li>Adjust voice settings as needed</li>
@@ -336,7 +336,6 @@
                     <li>The AI patient will respond both in text and speech</li>
                     <li>Use "Submit Conversation" to get evaluation feedback</li>
                     <li>Use "Export Feedback" to download your session</li>
-                    <li>IMPORTANT - refresh the browser after each scenario to generate a new session id</li>
                 </ol>
             </div>
             <p><strong>Tips:</strong> Speak clearly, ask open-ended questions, and practice active listening skills!</p>
@@ -396,13 +395,6 @@
                     <select id="sheetName" disabled>
                         <option value="">Get sheet names first...</option>
                     </select>
-                    <input 
-                        type="text" 
-                        id="sheetNameManual" 
-                        placeholder="Or type sheet name manually"
-                        style="margin-top: 10px; display: none;"
-                        title="Manually enter sheet name if dropdown doesn't work"
-                    >
                 </div>
                 
                 <!-- Scenario selection dropdown -->
@@ -704,20 +696,6 @@
             document.getElementById('webhookUrl').addEventListener('change', saveConfig);
             document.getElementById('submitWebhookUrl').addEventListener('change', saveConfig);
             document.getElementById('sheetId').addEventListener('change', saveConfig);
-            
-            // Auto-load sheet data when manual sheet name is entered
-            document.getElementById('sheetNameManual').addEventListener('change', function() {
-                if (this.value.trim()) {
-                    saveConfig();
-                    loadSheetData();
-                }
-            });
-            document.getElementById('sheetNameManual').addEventListener('blur', function() {
-                if (this.value.trim()) {
-                    saveConfig();
-                    loadSheetData();
-                }
-            });
         }
         
         // ===== RECORDING FUNCTIONS =====
@@ -821,7 +799,6 @@
                 
                 // If API call fails, show manual input option
                 showStatus('Could not load sheet names automatically. Enter manually below.', 'error');
-                document.getElementById('sheetNameManual').style.display = 'block';
                 
                 // Enable the dropdown and add a manual entry option
                 const select = document.getElementById('sheetName');
@@ -843,9 +820,6 @@
                 select.appendChild(option);
             });
             
-            // Hide manual input if dropdown is populated
-            document.getElementById('sheetNameManual').style.display = 'none';
-            
             // Auto-load sheet data when selection changes
             select.addEventListener('change', function() {
                 if (this.value) {
@@ -855,13 +829,10 @@
             });
         }
         
-        // Get selected sheet name (from dropdown or manual input)
+        // Get selected sheet name (from dropdown only)
         function getSelectedSheetName() {
             const dropdown = document.getElementById('sheetName');
-            const manual = document.getElementById('sheetNameManual');
-            
-            // Use dropdown value if available, otherwise use manual input
-            return dropdown.value || manual.value;
+            return dropdown.value;
         }
         
         // Load data from Google Sheets
@@ -1590,10 +1561,6 @@
                     // If dropdown has options, try to select the saved value
                     if (sheetNameDropdown.options.length > 1) {
                         sheetNameDropdown.value = config.sheetName;
-                    } else {
-                        // Otherwise, show it in the manual input
-                        document.getElementById('sheetNameManual').value = config.sheetName;
-                        document.getElementById('sheetNameManual').style.display = 'block';
                     }
                 }
             }
