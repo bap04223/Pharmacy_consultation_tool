@@ -20,7 +20,7 @@
             --primary-hover: #1d4ed8;
             --secondary-color: #10b981;
             --danger-color: #ef4444;
-            --background: #1e40af;
+            --background: #f3f4f6;
             --card-background: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
@@ -318,6 +318,27 @@
         <div class="header">
             <h1>🏥 Pharmacy Consultation Training</h1>
             <p>Practice your consultation skills with an AI-powered patient simulator</p>
+        </div>
+        
+        <!-- Instructions box -->
+        <div class="header">
+            <h2>📋 Instructions</h2>
+            <p><strong>Getting Started:</strong></p>
+            <div style="display: flex; gap: 40px; justify-content: center; text-align: left;">
+                <ol style="margin: 10px 0; padding-left: 20px; flex: 1;">
+                    <li>Enter your n8n webhook URLs in the Configuration section</li>
+                    <li>Load your Google Sheet with patient scenarios</li>
+                    <li>Select a patient scenario from the dropdown (or choose random)</li>
+                    <li>Adjust voice settings as needed</li>
+                </ol>
+                <ol start="5" style="margin: 10px 0; padding-left: 20px; flex: 1;">
+                    <li>Hold down the "Push to Talk" button and speak your consultation</li>
+                    <li>The AI patient will respond both in text and speech</li>
+                    <li>Use "Submit Conversation" to get evaluation feedback</li>
+                    <li>Use "Export Feedback" to download your session</li>
+                </ol>
+            </div>
+            <p><strong>Tips:</strong> Speak clearly, ask open-ended questions, and practice active listening skills!</p>
         </div>
         
         <!-- Status display area for system messages -->
