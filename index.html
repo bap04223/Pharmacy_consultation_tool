@@ -20,7 +20,7 @@
             --primary-hover: #1d4ed8;
             --secondary-color: #10b981;
             --danger-color: #ef4444;
-            --background: #1e3a8a; /* Navy blue background */
+            --background: #f3f4f6;
             --card-background: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
@@ -34,15 +34,13 @@
             background-color: var(--background);
             color: var(--text-primary);
             line-height: 1.6;
-            min-height: 100vh;
         }
         
         /* Container for centering content */
         .container {
-            max-width: 1400px;
+            max-width: 95%;
             margin: 0 auto;
             padding: 20px;
-            min-height: 100vh;
         }
         
         /* Header section styling */
@@ -52,7 +50,7 @@
             padding: 20px;
             background: var(--card-background);
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .header h1 {
@@ -60,38 +58,26 @@
             margin-bottom: 10px;
         }
         
-        /* Modified grid layout for three equal columns */
+        /* Grid layout for main content - MODIFIED FOR 3 COLUMNS */
         .grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1.5fr;
             gap: 20px;
             margin-bottom: 20px;
-            height: calc(100vh - 200px); /* Adjust height to fit viewport */
-            min-height: 600px;
         }
         
-        /* Card component for sections - modified for equal heights */
+        /* Card component for sections */
         .card {
             background: var(--card-background);
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .card h2 {
             margin-bottom: 15px;
             color: var(--text-primary);
             font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-        
-        /* Make card content scrollable if needed */
-        .card-content {
-            flex: 1;
-            overflow-y: auto;
         }
         
         /* Form input styling */
@@ -173,13 +159,13 @@
             background-color: #0284c7;
         }
         
-        /* Modified push to talk button for smaller space */
+        /* Push to talk button special styling */
         .talk-button {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            font-size: 16px;
-            margin: 15px auto;
+            font-size: 18px;
+            margin: 20px auto;
             display: block;
             position: relative;
             overflow: hidden;
@@ -203,15 +189,14 @@
             }
         }
         
-        /* Chat display area - modified for the new layout */
+        /* Chat display area */
         .chat-container {
-            flex: 1;
+            height: 400px;
             overflow-y: auto;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
             background-color: #fafafa;
-            margin-bottom: 15px;
         }
         
         /* Individual message styling */
@@ -281,97 +266,49 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Button group styling for control buttons - modified for vertical layout */
+        /* Button group styling for control buttons */
         .button-group {
             display: flex;
-            flex-direction: column;
             gap: 10px;
-            margin-top: auto;
-            flex-shrink: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
         }
         
         .button-group button {
-            width: 100%;
+            flex: 1;
+            min-width: 140px;
         }
         
-        /* Responsive design for mobile devices */
-        @media (max-width: 900px) {
+        /* Responsive design for mobile devices - MODIFIED */
+        @media (max-width: 1200px) {
             .grid {
-                grid-template-columns: 1fr;
-                height: auto;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
             }
             
-            .card {
-                height: auto;
-                min-height: 400px;
-            }
-            
-            .talk-button {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .button-group {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            
-            .button-group button {
-                flex: 1;
-                min-width: 140px;
+            .card:last-child {
+                grid-column: 1 / -1;
             }
         }
         
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
             .grid {
-                gap: 15px;
+                grid-template-columns: 1fr;
             }
             
-            .card {
-                padding: 15px;
+            .talk-button {
+                width: 120px;
+                height: 120px;
             }
-        }
-        
-        /* Voice control specific adjustments */
-        .voice-controls {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .voice-settings {
-            flex-shrink: 0;
-            margin-bottom: 20px;
-        }
-        
-        .transcription-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-        }
-        
-        #transcriptionBox {
-            flex: 1;
-            min-height: 100px;
-            max-height: none;
-            overflow-y: auto;
-            padding: 15px;
-            background-color: #f9fafb;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-        
-        .talk-section {
-            flex-shrink: 0;
-            text-align: center;
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .button-group button {
+                min-width: auto;
+            }
         }
     </style>
 </head>
@@ -386,137 +323,142 @@
         <!-- Status display area for system messages -->
         <div id="status" class="status info" style="display: none;"></div>
         
-        <!-- Main content grid - now three equal columns -->
+        <!-- Main content grid -->
         <div class="grid">
             <!-- Configuration section -->
             <div class="card">
                 <h2>⚙️ Configuration</h2>
-                <div class="card-content">
-                    <!-- n8n webhook URL input -->
-                    <div class="form-group">
-                        <label for="webhookUrl">n8n Webhook URL (Chat):</label>
-                        <input 
-                            type="url" 
-                            id="webhookUrl" 
-                            placeholder="https://your-n8n-instance.com/webhook/..."
-                            title="Enter your n8n webhook URL that will receive the messages"
-                        >
-                    </div>
-                    
-                    <!-- Submit webhook URL input -->
-                    <div class="form-group">
-                        <label for="submitWebhookUrl">n8n Submit Webhook URL:</label>
-                        <input 
-                            type="url" 
-                            id="submitWebhookUrl" 
-                            placeholder="https://your-n8n-instance.com/webhook/submit..."
-                            title="Enter your n8n webhook URL for submitting conversation history"
-                        >
-                    </div>
-                    
-                    <!-- Google Sheets configuration -->
-                    <div class="form-group">
-                        <label for="sheetId">Google Sheet ID:</label>
-                        <input 
-                            type="text" 
-                            id="sheetId" 
-                            placeholder="1ABC...xyz"
-                            title="The ID from your Google Sheets URL"
-                        >
-                        <button 
-                            class="btn-secondary" 
-                            onclick="loadSheetNames()" 
-                            style="margin-top: 10px; width: 100%;"
-                        >
-                            📋 Get Sheet Names
-                        </button>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="sheetName">Sheet Name:</label>
-                        <select id="sheetName" disabled>
-                            <option value="">Get sheet names first...</option>
-                        </select>
-                        <input 
-                            type="text" 
-                            id="sheetNameManual" 
-                            placeholder="Or type sheet name manually"
-                            style="margin-top: 10px; display: none;"
-                            title="Manually enter sheet name if dropdown doesn't work"
-                        >
-                    </div>
-                    
-                    <!-- Scenario selection dropdown -->
-                    <div class="form-group" style="margin-top: 20px;">
-                        <label for="scenarioSelect">Select Scenario:</label>
-                        <select id="scenarioSelect" disabled>
-                            <option value="">Load sheet data first...</option>
-                        </select>
-                    </div>
-                    
-                    <button class="btn-secondary" onclick="selectRandomScenario()" style="margin-top: 10px;">
-                        🎲 Random Scenario
+                
+                <!-- n8n webhook URL input -->
+                <div class="form-group">
+                    <label for="webhookUrl">n8n Webhook URL (Chat):</label>
+                    <input 
+                        type="url" 
+                        id="webhookUrl" 
+                        placeholder="https://your-n8n-instance.com/webhook/..."
+                        title="Enter your n8n webhook URL that will receive the messages"
+                    >
+                </div>
+                
+                <!-- Submit webhook URL input -->
+                <div class="form-group">
+                    <label for="submitWebhookUrl">n8n Submit Webhook URL:</label>
+                    <input 
+                        type="url" 
+                        id="submitWebhookUrl" 
+                        placeholder="https://your-n8n-instance.com/webhook/submit..."
+                        title="Enter your n8n webhook URL for submitting conversation history"
+                    >
+                </div>
+                
+                <!-- Google Sheets configuration -->
+                <div class="form-group">
+                    <label for="sheetId">Google Sheet ID:</label>
+                    <input 
+                        type="text" 
+                        id="sheetId" 
+                        placeholder="1ABC...xyz"
+                        title="The ID from your Google Sheets URL"
+                    >
+                    <button 
+                        class="btn-secondary" 
+                        onclick="loadSheetNames()" 
+                        style="margin-top: 10px; width: 100%;"
+                    >
+                        📋 Get Sheet Names
                     </button>
                 </div>
+                
+                <div class="form-group">
+                    <label for="sheetName">Sheet Name:</label>
+                    <select id="sheetName" disabled>
+                        <option value="">Get sheet names first...</option>
+                    </select>
+                    <input 
+                        type="text" 
+                        id="sheetNameManual" 
+                        placeholder="Or type sheet name manually"
+                        style="margin-top: 10px; display: none;"
+                        title="Manually enter sheet name if dropdown doesn't work"
+                    >
+                </div>
+                
+                <!-- Scenario selection dropdown -->
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="scenarioSelect">Select Scenario:</label>
+                    <select id="scenarioSelect" disabled>
+                        <option value="">Load sheet data first...</option>
+                    </select>
+                </div>
+                
+                <button class="btn-secondary" onclick="selectRandomScenario()" style="margin-top: 10px;">
+                    🎲 Random Scenario
+                </button>
             </div>
             
             <!-- Voice control section -->
             <div class="card">
                 <h2>🎙️ Voice Control</h2>
-                <div class="voice-controls">
-                    <!-- Voice settings -->
-                    <div class="voice-settings">
-                        <div class="form-group">
-                            <label for="voiceSelect">AI Voice:</label>
-                            <select id="voiceSelect">
-                                <option value="">Loading voices...</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="speechRate">Speech Rate:</label>
-                            <input 
-                                type="range" 
-                                id="speechRate" 
-                                min="0.5" 
-                                max="2" 
-                                step="0.1" 
-                                value="1"
-                            >
-                            <span id="rateValue">1.0</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Live transcription within voice control -->
-                    <div class="transcription-section">
-                        <label for="transcriptionBox">📝 Live Transcription:</label>
-                        <div id="transcriptionBox">
-                            <span style="color: var(--text-secondary);">Transcription will appear here when you speak...</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Push to talk button -->
-                    <div class="talk-section">
-                        <button 
-                            class="talk-button btn-danger" 
-                            id="talkButton"
-                            onmousedown="startRecording()"
-                            onmouseup="stopRecording()"
-                            onmouseleave="stopRecording()"
-                            ontouchstart="startRecording()"
-                            ontouchend="stopRecording()"
-                        >
-                            Push to Talk
-                        </button>
-                        
-                        <p style="color: var(--text-secondary); font-size: 14px;">
-                            Hold down the button to speak
-                        </p>
+                
+                <!-- Voice settings -->
+                <div class="form-group">
+                    <label for="voiceSelect">AI Voice:</label>
+                    <select id="voiceSelect">
+                        <option value="">Loading voices...</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="speechRate">Speech Rate:</label>
+                    <input 
+                        type="range" 
+                        id="speechRate" 
+                        min="0.5" 
+                        max="2" 
+                        step="0.1" 
+                        value="1"
+                    >
+                    <span id="rateValue">1.0</span>
+                </div>
+                
+                <!-- Live transcription within voice control -->
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="transcriptionBox">📝 Live Transcription:</label>
+                    <div id="transcriptionBox" style="
+                        min-height: 60px;
+                        max-height: 120px;
+                        overflow-y: auto;
+                        padding: 15px;
+                        background-color: #f9fafb;
+                        border: 1px solid var(--border-color);
+                        border-radius: 6px;
+                        font-size: 16px;
+                        line-height: 1.5;
+                    ">
+                        <span style="color: var(--text-secondary);">Transcription will appear here when you speak...</span>
                     </div>
                 </div>
+                
+                <!-- Push to talk button -->
+                <button 
+                    class="talk-button btn-danger" 
+                    id="talkButton"
+                    onmousedown="startRecording()"
+                    onmouseup="stopRecording()"
+                    onmouseleave="stopRecording()"
+                    ontouchstart="startRecording()"
+                    ontouchend="stopRecording()"
+                    style="margin-top: 60px;"
+                >
+                    Push to Talk
+                </button>
+                
+                <p style="text-align: center; color: var(--text-secondary);">
+                    Hold down the button to speak
+                </p>
             </div>
             
-            <!-- Chat display area - now in third column -->
+            <!-- Chat display area -->
             <div class="card">
                 <h2>💬 Conversation</h2>
                 <div class="chat-container" id="chatContainer">
@@ -915,3 +857,744 @@
             try {
                 // NOTE: You need to replace YOUR_API_KEY with your actual Google Sheets API key
                 const apiKey = 'AIzaSyDCrWAPXe6eYugvmnO1eJb7-S4QXQj3EgQ'; // REPLACE THIS!
+                
+                // Construct Google Sheets API URL for the specific sheet
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(sheetName)}?key=${apiKey}`;
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Process the actual sheet data
+                if (data.values && data.values.length > 0) {
+                    sheetData = data.values;
+                    populateScenarioDropdown();
+                    showStatus(`Loaded ${data.values.length - 1} scenarios from ${sheetName}`, 'success');
+                } else {
+                    showStatus('No data found in the selected sheet', 'error');
+                }
+                
+            } catch (error) {
+                console.error('Error loading sheet:', error);
+                showStatus('Error loading sheet data. Check console for details.', 'error');
+                
+                // For demo purposes, fall back to simulated data
+                if (error.message.includes('YOUR_API_KEY')) {
+                    showStatus('Using demo data. Replace YOUR_API_KEY to use real data.', 'info');
+                    simulateSheetData();
+                }
+            }
+        }
+        
+        // Simulate sheet data for demo purposes
+        function simulateSheetData() {
+            // Simulated data structure - 10 scenarios
+            sheetData = [
+                ['Scenario Name', 'Patient Name', 'Age', 'Gender', 'Chief Complaint', 'Medical History', 'Current Medications'],
+                ['Cough Relief', 'John Smith', '45', 'Male', 'Persistent cough', 'Hypertension', 'Lisinopril 10mg'],
+                ['Headache Management', 'Mary Johnson', '32', 'Female', 'Severe headaches', 'Migraines', 'None'],
+                ['Arthritis Pain', 'Robert Brown', '67', 'Male', 'Joint pain', 'Arthritis, Diabetes', 'Metformin 500mg, Ibuprofen PRN'],
+                ['Allergy Symptoms', 'Sarah Davis', '28', 'Female', 'Seasonal allergies', 'Asthma', 'Salbutamol inhaler'],
+                ['Sleep Issues', 'Michael Wilson', '52', 'Male', 'Insomnia', 'Depression', 'Sertraline 50mg'],
+                ['Skin Rash', 'Emily Taylor', '19', 'Female', 'Itchy rash on arms', 'Eczema', 'Hydrocortisone cream'],
+                ['Stomach Pain', 'James Anderson', '41', 'Male', 'Abdominal discomfort', 'GERD', 'Omeprazole 20mg'],
+                ['Cold Symptoms', 'Lisa Martinez', '35', 'Female', 'Runny nose and congestion', 'None', 'None'],
+                ['Back Pain', 'David Thompson', '58', 'Male', 'Lower back pain', 'Previous back surgery', 'Paracetamol PRN'],
+                ['Anxiety', 'Jennifer White', '26', 'Female', 'Feeling anxious', 'Generalized anxiety disorder', 'None']
+            ];
+            
+            populateScenarioDropdown();
+            showStatus('Sheet data loaded successfully', 'success');
+        }
+        
+        // Populate the scenario selection dropdown
+        function populateScenarioDropdown() {
+            const select = document.getElementById('scenarioSelect');
+            select.innerHTML = '<option value="">Select a scenario...</option>';
+            select.disabled = false;
+            
+            // Skip header row, process all data rows
+            for (let i = 1; i < sheetData.length; i++) {
+                const row = sheetData[i];
+                const option = document.createElement('option');
+                option.value = i;
+                // Use column A (index 0) for the scenario name
+                option.textContent = `${i}. ${row[0]}`;
+                select.appendChild(option);
+            }
+            
+            // Clear any existing event listeners
+            select.removeEventListener('change', handleScenarioChange);
+            
+            // Add change event listener
+            select.addEventListener('change', handleScenarioChange);
+        }
+        
+        function handleScenarioChange(e) {
+            if (e.target.value) {
+                selectScenario(parseInt(e.target.value));
+            }
+        }
+        
+        // Handle scenario selection
+        function selectScenario(rowIndex) {
+            const headers = sheetData[0];
+            const row = sheetData[rowIndex];
+            
+            // Create scenario object
+            currentScenario = {};
+            headers.forEach((header, index) => {
+                currentScenario[header] = row[index];
+            });
+            
+            console.log('Selected scenario:', currentScenario);
+            showStatus(`Scenario loaded: ${currentScenario['Patient Name']}`, 'success');
+            
+            // Clear previous conversation
+            clearChat();
+            
+            // Add initial message
+            addMessage('Scenario loaded. Press and hold the talk button to start the consultation.', 'ai');
+        }
+        
+        // ===== EXPORT CONVERSATION FUNCTION =====
+        // New function to export conversation as a downloadable text file
+        
+        function exportConversation() {
+            if (conversationHistory.length === 0) {
+                showStatus('No conversation to export', 'error');
+                return;
+            }
+            
+            try {
+                // Create formatted text content
+                let exportText = '';
+                
+                // Add header information
+                exportText += '='.repeat(60) + '\n';
+                exportText += 'PHARMACY CONSULTATION TRAINING - CONVERSATION EXPORT\n';
+                exportText += '='.repeat(60) + '\n\n';
+                
+                // Add session information
+                exportText += `Session ID: ${sessionId}\n`;
+                exportText += `Export Date: ${new Date().toLocaleString()}\n`;
+                exportText += `Session Start: ${new Date(parseInt(sessionId.split('_')[1])).toLocaleString()}\n\n`;
+                
+                // Add scenario information if available
+                if (currentScenario) {
+                    exportText += 'SCENARIO DETAILS:\n';
+                    exportText += '-'.repeat(20) + '\n';
+                    Object.keys(currentScenario).forEach(key => {
+                        if (currentScenario[key] && currentScenario[key].toString().trim() !== '') {
+                            exportText += `${key}: ${currentScenario[key]}\n`;
+                        }
+                    });
+                    exportText += '\n';
+                }
+                
+                // Add conversation statistics
+                const userMessages = conversationHistory.filter(h => h.sender === 'user').length;
+                const aiMessages = conversationHistory.filter(h => h.sender === 'ai').length;
+                const sessionDuration = Date.now() - parseInt(sessionId.split('_')[1]);
+                const durationMinutes = Math.floor(sessionDuration / 60000);
+                const durationSeconds = Math.floor((sessionDuration % 60000) / 1000);
+                
+                exportText += 'CONVERSATION STATISTICS:\n';
+                exportText += '-'.repeat(25) + '\n';
+                exportText += `Total Messages: ${conversationHistory.length}\n`;
+                exportText += `Student Messages: ${userMessages}\n`;
+                exportText += `AI Patient Messages: ${aiMessages}\n`;
+                exportText += `Session Duration: ${durationMinutes}m ${durationSeconds}s\n\n`;
+                
+                // Add full conversation - capture everything displayed in the chat
+                exportText += 'FULL CONVERSATION:\n';
+                exportText += '-'.repeat(20) + '\n\n';
+                
+                // Get all messages from the chat container
+                const chatContainer = document.getElementById('chatContainer');
+                const messageElements = chatContainer.getElementsByClassName('message');
+                
+                for (let i = 0; i < messageElements.length; i++) {
+                    const messageElement = messageElements[i];
+                    const messageClass = messageElement.className;
+                    
+                    // Determine speaker type from CSS class
+                    let speaker = 'UNKNOWN';
+                    if (messageClass.includes('user')) {
+                        speaker = 'STUDENT';
+                    } else if (messageClass.includes('ai')) {
+                        speaker = 'AI PATIENT';
+                    } else if (messageClass.includes('system')) {
+                        speaker = 'SYSTEM';
+                    }
+                    
+                    // Get the message content and clean it up
+                    let messageContent = messageElement.innerHTML
+                        .replace(/<br\s*\/?>/g, '\n') // Convert <br> to newlines
+                        .replace(/<\/p><p[^>]*>/g, '\n\n') // Convert paragraph breaks
+                        .replace(/<p[^>]*>/g, '') // Remove opening p tags
+                        .replace(/<\/p>/g, '') // Remove closing p tags
+                        .replace(/<h[1-3][^>]*>/g, '\n') // Convert headers to newlines
+                        .replace(/<\/h[1-3]>/g, ':\n') // Add colon after headers
+                        .replace(/<strong>/g, '**') // Convert bold to markdown
+                        .replace(/<\/strong>/g, '**')
+                        .replace(/<em>/g, '*') // Convert italic to markdown
+                        .replace(/<\/em>/g, '*')
+                        .replace(/<ul[^>]*>/g, '\n') // Convert lists
+                        .replace(/<\/ul>/g, '')
+                        .replace(/<li[^>]*>/g, '  • ') // Convert list items to bullets
+                        .replace(/<\/li>/g, '\n')
+                        .replace(/<[^>]*>/g, '') // Remove any remaining HTML tags
+                        .replace(/&nbsp;/g, ' ') // Replace non-breaking spaces
+                        .replace(/&amp;/g, '&') // Replace HTML entities
+                        .replace(/&lt;/g, '<')
+                        .replace(/&gt;/g, '>')
+                        .replace(/&quot;/g, '"')
+                        .replace(/\n\s*\n\s*\n/g, '\n\n') // Remove excessive line breaks
+                        .trim();
+                    
+                    // Skip empty messages or spinner messages
+                    if (!messageContent || messageContent.includes('spinner')) {
+                        continue;
+                    }
+                    
+                    // Add speaker and message
+                    exportText += `${speaker}:\n`;
+                    
+                    // Add message with proper formatting
+                    const lines = messageContent.split('\n');
+                    lines.forEach(line => {
+                        if (line.trim()) {
+                            exportText += `  ${line.trim()}\n`;
+                        } else {
+                            exportText += '\n';
+                        }
+                    });
+                    
+                    exportText += '\n'; // Add space between messages
+                }
+                
+                // Add export footer
+                exportText += '='.repeat(60) + '\n';
+                exportText += 'End of Conversation Export\n';
+                exportText += `Generated by Pharmacy Training System v1.0\n`;
+                exportText += '='.repeat(60) + '\n';
+                
+                // Create and download the file
+                const blob = new Blob([exportText], { type: 'text/plain;charset=utf-8' });
+                const url = window.URL.createObjectURL(blob);
+                
+                // Create download link
+                const downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                
+                // Generate filename with timestamp and scenario info
+                const now = new Date();
+                const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
+                const timeStr = now.toTimeString().split(' ')[0].replace(/:/g, '-'); // HH-MM-SS
+                const scenarioName = currentScenario && currentScenario['Scenario Name'] 
+                    ? currentScenario['Scenario Name'].replace(/[^a-zA-Z0-9]/g, '_') 
+                    : 'Unknown_Scenario';
+                
+                downloadLink.download = `Pharmacy_Training_${scenarioName}_${dateStr}_${timeStr}.txt`;
+                
+                // Trigger download
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+                
+                // Clean up URL object
+                window.URL.revokeObjectURL(url);
+                
+                showStatus('✅ Conversation exported successfully!', 'success');
+                console.log('Conversation exported:', downloadLink.download);
+                
+            } catch (error) {
+                console.error('Export error:', error);
+                showStatus(`❌ Export failed: ${error.message}`, 'error');
+            }
+        }
+        
+        // ===== WEBHOOK COMMUNICATION =====
+        // Send data to n8n webhook
+        
+        async function sendToWebhook(message) {
+            const webhookUrl = document.getElementById('webhookUrl').value;
+            
+            if (!webhookUrl) {
+                showStatus('Webhook URL not configured', 'error');
+                return;
+            }
+            
+            // Show loading spinner
+            addMessage('<div class="spinner"></div>', 'ai');
+            
+            try {
+                // Prepare data to send
+                const payload = {
+                    sessionId: sessionId,  // Include unique session ID
+                    message: message,
+                    scenario: currentScenario,
+                    timestamp: new Date().toISOString(),
+                    conversationHistory: conversationHistory,
+                    studentInfo: {
+                        sessionStartTime: new Date(parseInt(sessionId.split('_')[1])).toISOString(),
+                        messageCount: conversationHistory.filter(h => h.sender === 'user').length + 1
+                    }
+                };
+                
+                console.log('Sending to webhook:', webhookUrl);
+                console.log('Payload:', payload);
+                
+                // Send POST request to webhook
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    mode: 'cors', // Explicitly set CORS mode
+                    body: JSON.stringify(payload)
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                // Try to get response as text first to see what we're getting
+                const responseText = await response.text();
+                console.log('Raw response:', responseText);
+                
+                let data;
+                try {
+                    // Try to parse as JSON
+                    data = JSON.parse(responseText);
+                    console.log('Parsed response:', data);
+                } catch (parseError) {
+                    console.error('Failed to parse response as JSON:', parseError);
+                    // If not JSON, treat the text as the response
+                    data = { response: responseText };
+                }
+                
+                // Remove loading spinner
+                removeLastMessage();
+                
+                // Check various possible response formats
+                let aiResponse = null;
+                
+                // Common n8n response formats
+                if (data.response) {
+                    aiResponse = data.response;
+                } else if (data.message) {
+                    aiResponse = data.message;
+                } else if (data.text) {
+                    aiResponse = data.text;
+                } else if (data.output) {
+                    aiResponse = data.output;
+                } else if (typeof data === 'string') {
+                    aiResponse = data;
+                } else if (Array.isArray(data) && data.length > 0) {
+                    // Sometimes n8n returns an array
+                    aiResponse = data[0].response || data[0].message || data[0];
+                }
+                
+                if (aiResponse) {
+                    addMessage(aiResponse, 'ai');
+                    
+                    // Speak the response
+                    speakText(aiResponse);
+                } else {
+                    console.error('Could not find response in data:', data);
+                    showStatus('Unexpected response format from webhook', 'error');
+                    addMessage('Received response but could not parse it. Check console for details.', 'ai');
+                }
+                
+            } catch (error) {
+                console.error('Webhook error:', error);
+                removeLastMessage();
+                
+                // More specific error messages
+                if (error.message.includes('Failed to fetch')) {
+                    showStatus('Cannot reach webhook - check URL and CORS settings', 'error');
+                    addMessage('Connection failed. Make sure your n8n webhook is accessible and CORS is enabled.', 'ai');
+                } else {
+                    showStatus(`Error: ${error.message}`, 'error');
+                    addMessage(`Error: ${error.message}`, 'ai');
+                }
+            }
+        }
+        
+        // ===== SUBMIT CONVERSATION FUNCTION =====
+        // Function to submit conversation history to a separate webhook
+        
+        async function submitConversation() {
+            const submitWebhookUrl = document.getElementById('submitWebhookUrl').value;
+            
+            if (!submitWebhookUrl) {
+                showStatus('Submit webhook URL not configured', 'error');
+                return;
+            }
+            
+            if (conversationHistory.length === 0) {
+                showStatus('No conversation to submit', 'error');
+                return;
+            }
+            
+            showStatus('Submitting conversation...', 'info');
+            
+            // Add submitting message to chat
+            addMessage('📤 Submitting conversation for evaluation...', 'system');
+            
+            try {
+                // Prepare comprehensive data for submission
+                const submissionPayload = {
+                    sessionId: sessionId,
+                    scenario: currentScenario,
+                    conversationHistory: conversationHistory,
+                    submissionTime: new Date().toISOString(),
+                    sessionInfo: {
+                        sessionStartTime: new Date(parseInt(sessionId.split('_')[1])).toISOString(),
+                        totalMessages: conversationHistory.length,
+                        userMessages: conversationHistory.filter(h => h.sender === 'user').length,
+                        aiMessages: conversationHistory.filter(h => h.sender === 'ai').length,
+                        duration: Date.now() - parseInt(sessionId.split('_')[1]) // Duration in milliseconds
+                    },
+                    metadata: {
+                        userAgent: navigator.userAgent,
+                        timestamp: new Date().toISOString(),
+                        type: 'conversation_submission'
+                    }
+                };
+                
+                console.log('Submitting conversation:', submissionPayload);
+                
+                // Send POST request to submit webhook with enhanced headers
+                const response = await fetch(submitWebhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Accept-Encoding': 'gzip, deflate, br',
+                        'Cache-Control': 'no-cache',
+                        'User-Agent': 'PharmacyTraining/1.0'
+                    },
+                    mode: 'cors',
+                    credentials: 'omit',
+                    body: JSON.stringify(submissionPayload)
+                });
+                
+                console.log('Submit response status:', response.status);
+                console.log('Submit response headers:', Object.fromEntries(response.headers.entries()));
+                console.log('Submit response ok:', response.ok);
+                console.log('Submit response type:', response.type);
+                
+                // Log response details for debugging
+                const contentType = response.headers.get('content-type');
+                const contentLength = response.headers.get('content-length');
+                console.log('Content-Type:', contentType);
+                console.log('Content-Length:', contentLength);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error response body:', errorText);
+                    throw new Error(`HTTP error! status: ${response.status}, body: ${errorText}`);
+                }
+                
+                // Get response from submission webhook
+                const responseText = await response.text();
+                console.log('Submit raw response text:', responseText);
+                console.log('Response text length:', responseText.length);
+                console.log('Response text type:', typeof responseText);
+                
+                // Check if response is empty
+                if (!responseText || responseText.trim() === '') {
+                    console.warn('Empty response received from webhook');
+                    addMessage('📋 Evaluation Complete:\n\nConversation submitted successfully, but no feedback was returned. The evaluation may be processing in the background.', 'system');
+                    showStatus('✅ Conversation submitted (no feedback received)', 'success');
+                    return;
+                }
+                
+                let responseData;
+                let feedbackMessage = '';
+                
+                try {
+                    // Try to parse as JSON first
+                    responseData = JSON.parse(responseText);
+                    console.log('Parsed JSON response:', responseData);
+                    
+                    // Check various possible response formats for feedback
+                    if (responseData.feedback) {
+                        feedbackMessage = responseData.feedback;
+                    } else if (responseData.evaluation) {
+                        feedbackMessage = responseData.evaluation;
+                    } else if (responseData.response) {
+                        feedbackMessage = responseData.response;
+                    } else if (responseData.message) {
+                        feedbackMessage = responseData.message;
+                    } else if (responseData.data && responseData.data.feedback) {
+                        feedbackMessage = responseData.data.feedback;
+                    } else if (responseData.data && responseData.data.response) {
+                        feedbackMessage = responseData.data.response;
+                    } else if (responseData.result) {
+                        feedbackMessage = responseData.result;
+                    } else {
+                        // If JSON but no recognizable feedback field, stringify the object
+                        feedbackMessage = `Raw response: ${JSON.stringify(responseData, null, 2)}`;
+                    }
+                    
+                } catch (parseError) {
+                    console.log('Not JSON, treating as plain text');
+                    // Check if it looks like HTML (common n8n issue)
+                    if (responseText.trim().startsWith('<') && responseText.trim().includes('html')) {
+                        console.warn('Received HTML response instead of JSON - this usually means the workflow returned HTML');
+                        feedbackMessage = 'Received HTML response instead of expected feedback. Check your n8n workflow output format.';
+                    } else {
+                        // Plain text response
+                        feedbackMessage = responseText.trim();
+                    }
+                }
+                
+                console.log('Final feedback message:', feedbackMessage);
+                
+                // Format the feedback message for better display
+                function formatFeedback(text) {
+                    if (!text) return text;
+                    
+                    // Convert markdown-style formatting to HTML
+                    let formatted = text
+                        // Convert **bold** to <strong>bold</strong>
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        // Convert *italic* to <em>italic</em>
+                        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                        // Convert ### Heading to <h3>Heading</h3>
+                        .replace(/^### (.*$)/gm, '<h3 style="margin: 15px 0 10px 0; color: var(--primary-color); font-size: 1.1em;">$1</h3>')
+                        // Convert ## Heading to <h2>Heading</h2>
+                        .replace(/^## (.*$)/gm, '<h2 style="margin: 20px 0 10px 0; color: var(--primary-color); font-size: 1.2em;">$1</h2>')
+                        // Convert # Heading to <h1>Heading</h1>
+                        .replace(/^# (.*$)/gm, '<h1 style="margin: 20px 0 15px 0; color: var(--primary-color); font-size: 1.3em;">$1</h1>')
+                        // Convert - bullet points to proper list items
+                        .replace(/^- (.*$)/gm, '<li style="margin: 5px 0; padding-left: 5px;">$1</li>')
+                        // Convert 1. numbered lists to proper list items
+                        .replace(/^\d+\. (.*$)/gm, '<li style="margin: 5px 0; padding-left: 5px;">$1</li>')
+                        // Convert double line breaks to paragraph breaks
+                        .replace(/\n\n/g, '</p><p style="margin: 10px 0; line-height: 1.5;">')
+                        // Convert single line breaks to <br>
+                        .replace(/\n/g, '<br>');
+                    
+                    // Wrap in paragraph tags if not already wrapped
+                    if (!formatted.includes('<p>') && !formatted.includes('<h')) {
+                        formatted = `<p style="margin: 10px 0; line-height: 1.5;">${formatted}</p>`;
+                    } else if (formatted.includes('<p>')) {
+                        // Ensure it starts with a paragraph
+                        if (!formatted.startsWith('<p>') && !formatted.startsWith('<h')) {
+                            formatted = `<p style="margin: 10px 0; line-height: 1.5;">${formatted}`;
+                        }
+                        // Ensure it ends with a closing paragraph
+                        if (!formatted.endsWith('</p>') && !formatted.endsWith('</h3>') && !formatted.endsWith('</h2>') && !formatted.endsWith('</h1>')) {
+                            formatted = `${formatted}</p>`;
+                        }
+                    }
+                    
+                    // Wrap list items in proper ul tags
+                    if (formatted.includes('<li>')) {
+                        formatted = formatted
+                            .replace(/(<li>.*?<\/li>)/gs, '<ul style="margin: 10px 0; padding-left: 20px;">$1</ul>')
+                            .replace(/<\/ul>\s*<ul[^>]*>/g, ''); // Merge consecutive lists
+                    }
+                    
+                    return formatted;
+                }
+                
+                // Display the feedback/response
+                if (feedbackMessage) {
+                    const formattedFeedback = formatFeedback(feedbackMessage);
+                    addMessage(`📋 Evaluation Feedback:<br><br>${formattedFeedback}`, 'system');
+                    showStatus('✅ Conversation submitted and evaluated successfully!', 'success');
+                } else {
+                    addMessage('📋 Evaluation Complete:\n\nConversation submitted successfully, but the feedback format was not recognized. Check console for raw response.', 'system');
+                    showStatus('✅ Conversation submitted (feedback format issue)', 'success');
+                }
+                
+            } catch (error) {
+                console.error('Submit conversation error:', error);
+                console.error('Error stack:', error.stack);
+                
+                // More specific error messages
+                if (error.message.includes('Failed to fetch')) {
+                    showStatus('Cannot reach submit webhook - check URL and CORS settings', 'error');
+                    addMessage('❌ Submission failed. Make sure your n8n submit webhook is accessible and CORS is enabled.', 'system');
+                } else if (error.message.includes('NetworkError')) {
+                    showStatus('Network error - check n8n webhook configuration', 'error');
+                    addMessage('❌ Network error. Check that your n8n webhook is running and accessible.', 'system');
+                } else {
+                    showStatus(`❌ Submission error: ${error.message}`, 'error');
+                    addMessage(`❌ Submission failed: ${error.message}`, 'system');
+                }
+            }
+        }
+        
+        // ===== TEXT TO SPEECH =====
+        // Convert AI response to speech
+        
+        function speakText(text) {
+            console.log('Speaking text:', text);
+            
+            // Cancel any ongoing speech
+            synthesis.cancel();
+            
+            // Check if speech synthesis is available
+            if (!synthesis) {
+                console.error('Speech synthesis not available');
+                return;
+            }
+            
+            // Create utterance
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Set voice
+            const voiceSelect = document.getElementById('voiceSelect');
+            const voices = synthesis.getVoices();
+            console.log('Available voices:', voices.length);
+            
+            if (voiceSelect.value && voices[voiceSelect.value]) {
+                utterance.voice = voices[voiceSelect.value];
+                console.log('Using voice:', voices[voiceSelect.value].name);
+            }
+            
+            // Set rate
+            utterance.rate = parseFloat(document.getElementById('speechRate').value);
+            console.log('Speech rate:', utterance.rate);
+            
+            // Add event listeners for debugging
+            utterance.onstart = function() {
+                console.log('Speech started');
+            };
+            
+            utterance.onend = function() {
+                console.log('Speech ended');
+            };
+            
+            utterance.onerror = function(event) {
+                console.error('Speech error:', event);
+            };
+            
+            // Speak
+            synthesis.speak(utterance);
+        }
+        
+        // ===== CHAT MANAGEMENT =====
+        // Handle chat display and messages
+        
+        function addMessage(text, sender) {
+            const chatContainer = document.getElementById('chatContainer');
+            
+            // Create message element
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.innerHTML = text;
+            
+            // Add to container
+            chatContainer.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            // Add to history (excluding loading spinners and system messages for submission)
+            if (!text.includes('spinner') && sender !== 'system') {
+                conversationHistory.push({
+                    sender: sender,
+                    message: text,
+                    timestamp: new Date().toISOString()
+                });
+            }
+        }
+        
+        function removeLastMessage() {
+            const chatContainer = document.getElementById('chatContainer');
+            const messages = chatContainer.getElementsByClassName('message');
+            if (messages.length > 0) {
+                messages[messages.length - 1].remove();
+            }
+        }
+        
+        function clearChat() {
+            document.getElementById('chatContainer').innerHTML = '';
+            conversationHistory = [];
+        }
+        
+        // ===== UTILITY FUNCTIONS =====
+        // Helper functions
+        
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+            statusDiv.style.display = 'block';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        function saveConfig() {
+            const config = {
+                webhookUrl: document.getElementById('webhookUrl').value,
+                submitWebhookUrl: document.getElementById('submitWebhookUrl').value,
+                sheetId: document.getElementById('sheetId').value,
+                sheetName: getSelectedSheetName()
+            };
+            localStorage.setItem('pharmacyChatConfig', JSON.stringify(config));
+        }
+        
+        function loadSavedConfig() {
+            const saved = localStorage.getItem('pharmacyChatConfig');
+            if (saved) {
+                const config = JSON.parse(saved);
+                document.getElementById('webhookUrl').value = config.webhookUrl || '';
+                document.getElementById('submitWebhookUrl').value = config.submitWebhookUrl || '';
+                document.getElementById('sheetId').value = config.sheetId || '';
+                
+                // Try to set sheet name in dropdown first
+                const sheetNameDropdown = document.getElementById('sheetName');
+                if (config.sheetName) {
+                    // If dropdown has options, try to select the saved value
+                    if (sheetNameDropdown.options.length > 1) {
+                        sheetNameDropdown.value = config.sheetName;
+                    } else {
+                        // Otherwise, show it in the manual input
+                        document.getElementById('sheetNameManual').value = config.sheetName;
+                        document.getElementById('sheetNameManual').style.display = 'block';
+                    }
+                }
+            }
+        }
+        
+        // Select a random scenario
+        function selectRandomScenario() {
+            if (sheetData.length <= 1) {
+                showStatus('Please load sheet data first', 'error');
+                return;
+            }
+            
+            // Generate random index (skip header row at index 0)
+            const randomIndex = Math.floor(Math.random() * (sheetData.length - 1)) + 1;
+            
+            // Update dropdown to show selected scenario
+            document.getElementById('scenarioSelect').value = randomIndex;
+            
+            // Select the scenario
+            selectScenario(randomIndex);
+            
+            showStatus(`Randomly selected: ${sheetData[randomIndex][0]}`, 'success');
+        }
+    </script>
+</body>
+</html>
