@@ -80,8 +80,10 @@
         }
         
         .instructions-column li {
-            margin-bottom: 8px;
-            line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
         }
         
         /* Grid layout for main content - MODIFIED FOR 3 COLUMNS */
@@ -365,20 +367,25 @@
             <p><strong>Getting Started:</strong></p>
             <div class="instructions-container">
                 <div class="instructions-column">
-                    <ol>
-                        <li>Enter your n8n webhook URLs in the Configuration section</li>
-                        <li>Load your Google Sheet with patient scenarios</li>
-                        <li>Select a patient scenario from the dropdown (or choose random)</li>
-                        <li>Adjust voice settings as needed</li>
-                    </ol>
-                </div>
-                <div class="instructions-column">
-                    <ol start="5">
-                        <li>Hold down the "Push to Talk" button and speak your consultation</li>
-                        <li>The AI patient will respond both in text and speech</li>
-                        <li>Use "Submit Conversation" to get evaluation feedback</li>
-                        <li>Use "Export Feedback" to download your session</li>
-                        <li>IMPORTANT - refresh the browser after each scenario to generate a new session id</li>
+                   <ol>
+            <li>Enter your n8n webhook URLs in the Configuration section</li>
+            <li>Load your Google Sheet with patient scenarios</li>
+            <li>Select a patient scenario from the dropdown (or choose random)</li>
+        </ol>
+    </div>
+    <div class="instructions-column" style="flex: 1;">
+        <ol start="4">
+            <li>Adjust voice settings as needed</li>
+            <li>Hold down the "Push to Talk" button and speak your consultation</li>
+            <li>The AI patient will respond both in text and speech</li>
+        </ol>
+    </div>
+    <div class="instructions-column" style="flex: 1;">
+        <ol start="7">
+            <li>Use "Submit Conversation" to get evaluation feedback</li>
+            <li>Use "Export Feedback" to download your session</li>
+            <li>IMPORTANT - refresh the browser after each scenario to generate a new session id</li>
+        </ol>
                     </ol>
                 </div>
             </div>
